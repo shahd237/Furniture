@@ -1,0 +1,1244 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* إعدادات عامة */
+body {
+  font-family: "Cairo", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f6f9fc;
+  overflow-x:hidden;
+}
+
+
+
+/* ===== Navbar ===== */
+.navbar {
+  background: linear-gradient(135deg, #0099cc, #00bfa6, #ffd54f);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.navbar:hover {
+  background-position: right center;
+}
+
+/* ===== Logo ===== */
+.navbar-brand {
+  color: #ffffff !important;
+  font-weight: 800;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.navbar-brand img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+  transition: transform 0.6s ease;
+}
+
+.navbar-brand:hover img {
+  transform: rotate(360deg) scale(1.1);
+}
+
+/* ===== Nav Links ===== */
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 1.05rem;
+  position: relative;
+  margin: 0 6px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* الخط الذهبي المتحرك أسفل اللينك */
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #ffeb3b;
+  transition: width 0.3s ease;
+}
+
+/* تأثير الـ hover */
+.navbar-nav .nav-link:hover {
+  color: #ffeb3b !important;
+  transform: translateY(-2px);
+}
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===== أيقونات ===== */
+.navbar-nav .nav-item i {
+  margin-left: 6px;
+  color: #ffffffcc;
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.navbar-nav .nav-item:hover i {
+  color: #ffeb3b;
+  transform: rotate(10deg) scale(1.2);
+}
+
+/* ===== Navbar وقت السحب للأسفل ===== */
+.navbar.scrolled {
+  background: linear-gradient(135deg, #007bff, #00bfa6);
+  background-size: 200% 200%;
+  animation: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Animation for gradient ===== */
+@keyframes gradientMove {
+  0% {
+    background-position: left top;
+  }
+  50% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left top;
+  }
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 992px) {
+  .navbar-nav .nav-link {
+    text-align: center;
+    padding: 10px 0;
+  }
+  .navbar-brand {
+    font-size: 1.4rem;
+  }
+}
+
+/* ====== Home Section ====== */
+.home {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* شكل الصور داخل الكاروسيل */
+.home .carousel-item img {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+  opacity: 0.85; /* شفافية خفيفة */
+  transform: scale(1.05);
+  transition: transform 3s ease-in-out, opacity 1.5s ease-in-out;
+  filter: brightness(70%) saturate(120%);
+}
+
+/* تأثير التلاشي بين الصور */
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-fade .carousel-item.active {
+  opacity: 1;
+}
+
+/* تأثير الزوم الخفيف */
+.carousel-item.active img {
+  transform: scale(1);
+  opacity: 1;
+}
+/* Overlay animated gradient احترافي ومبهج */
+.home::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 99, 71, 0.5),
+    /* Tomoto */ rgba(255, 206, 86, 0.4),
+    /* Yellow */ rgba(54, 162, 235, 0.4),
+    /* Blue */ rgba(75, 192, 192, 0.4),
+    /* Green */ rgba(153, 102, 255, 0.4) /* Purple */
+  );
+  background-size: 300% 300%;
+  z-index: 1;
+  pointer-events: none;
+  animation: colorfulOverlay 12s ease infinite alternate;
+}
+
+/* حركة gradient */
+@keyframes colorfulOverlay {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* إعادة تنسيق النصوص في الكاروسيل لتكون واضحة */
+.home .carousel-caption {
+  position: absolute;
+  top: 50%; /* مركزي رأسي */
+  left: 50%; /* مركزي أفقي */
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  font-family: cursive;
+}
+
+/* العناوين */
+.home .carousel-caption .title1 {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #fff; /* لون متناسق مع Navbar */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  animation: fadeInDown 1.2s ease forwards;
+}
+
+.home .carousel-caption .title2 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #ffd54f;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  animation: fadeInDown 1.5s ease forwards;
+}
+
+.home .carousel-caption .title3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #0078ff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown 1.8s ease forwards;
+}
+
+/* الفقرة */
+.home .carousel-caption .body {
+  font-size: 1.5rem;
+  color: #f0f0f0;
+  max-width: 700px;
+  margin: 1rem auto 0 auto;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 2s ease forwards;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+  .home .carousel-caption .title1 {
+    font-size: 2rem;
+  }
+  .home .carousel-caption .title2 {
+    font-size: 1.6rem;
+  }
+  .home .carousel-caption .title3 {
+    font-size: 1.4rem;
+  }
+  .home .carousel-caption .body {
+    font-size: 1rem;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home .carousel-caption .title1 {
+    font-size: 1.6rem;
+  }
+  .home .carousel-caption .title2 {
+    font-size: 1.4rem;
+  }
+  .home .carousel-caption .title3 {
+    font-size: 1.2rem;
+  }
+  .home .carousel-caption .body {
+    font-size: 0.9rem;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home .carousel-caption .title1 {
+    font-size: 1.3rem;
+  }
+  .home .carousel-caption .title2 {
+    font-size: 1.1rem;
+  }
+  .home .carousel-caption .title3 {
+    font-size: 1rem;
+  }
+  .home .carousel-caption .body {
+    font-size: 0.8rem;
+    max-width: 300px;
+  }
+}
+
+/* Container */
+.buttons {
+  margin-top: 10%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Base style for all buttons */
+.buttons .btn {
+  padding: 12px 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease; /* hover effect بسيط */
+}
+
+/* Secondary Button */
+.buttons .btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.buttons .btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* Warning Button */
+.buttons .btn-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.buttons .btn-warning:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .buttons .btn {
+    width: 80%;
+    font-size: 1rem;
+  }
+}
+
+/* ====== Buttons in Carousel ====== */
+.buttons {
+  margin-top: 10%;
+}
+.buttons .btn {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 5px;
+  padding: 10px 25px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+.buttons .btn-warning:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.buttons .btn-secondary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*---------- Stats Section------------*/
+/* ===== Stats Section ===== */
+.stats-section {
+  padding: 60px 0;
+  background: linear-gradient(
+    135deg,
+    #0099cc,
+    #00bfa6,
+    #ffd54f
+  ); /* مزيج ألوان احترافي */
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+}
+
+/* ===== Individual Stat Cards ===== */
+.stat-card {
+  background: rgba(255, 255, 255, 0.15); /* كارد شبه شفاف */
+  backdrop-filter: blur(10px); /* تأثير خلفية ضبابي */
+  padding: 25px 15px;
+  border-radius: 15px;
+  transition: transform 0.4s ease, background 0.4s ease;
+  color: #fff;
+  font-weight: 600;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.3); /* يزيد الوضوح عند hover */
+}
+
+/* ===== Numbers Styling ===== */
+.stat-card .number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.stat-card .number::before {
+  content: "+";
+  margin-right: 4px;
+  font-size: 2.5rem;
+  color: #ffeb3b; /* لون الـ + مميز */
+}
+
+.stat-card .number1 {
+  position: relative;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+/* ===== Labels ===== */
+.stat-card .label {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* ===== Gradient Animation ===== */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .stat-card {
+    margin-bottom: 20px;
+  }
+}
+
+.who-img-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.who-img {
+  width: 100%;
+  height: auto; /* تحافظ على نسب الصورة */
+  max-height: 400px; /* تحدد الحد الأعلى للارتفاع */
+  object-fit: cover; /* تغطي العمود بدون تشويه */
+}
+
+.who {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e9f2ff 100%);
+  overflow: hidden;
+}
+
+.who h2 {
+  color: #0d47a1;
+  font-weight: 700;
+}
+
+/* emoji animation */
+.wave {
+  display: inline-block;
+  animation: wave 1.6s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.details-card {
+  background: linear-gradient(135deg, #fff3e0, #ffe082); /* ألوان دافئة ناعمة */
+  border: 2px solid #ffca28;
+  border-radius: 20px;
+  padding: 1.2rem;
+  box-shadow: 0 5px 15px rgba(255, 202, 40, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* تأثير متحرك عند hover */
+.details-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #fff9c4, #ffecb3);
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.details-card:hover::before {
+  top: 0;
+}
+
+.details-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 25px rgba(255, 202, 40, 0.4);
+  border-color: #ffb300;
+}
+
+.details-card * {
+  position: relative;
+  z-index: 1;
+}
+
+/* أيقونات جذابة */
+.details-card i {
+  color: #ffb300;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.details-card:hover i {
+  color: #ff6f00;
+  transform: rotate(10deg) scale(1.2);
+}
+
+/* responsiveness tweaks */
+@media (max-width: 768px) {
+  .who h2 {
+    font-size: 1.6rem;
+  }
+
+  .details-card {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .details-card i {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+}
+
+.services {
+  background: linear-gradient(135deg, #e3f2fd, #fff8e1);
+}
+
+.services .title h1 {
+  color: #0d47a1;
+  font-weight: 700;
+}
+
+.services .title p {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.service-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-card img {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.08);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(13, 71, 161, 0.2);
+}
+
+.service-card h4 {
+  color: #1565c0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.service-card p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-card img {
+    height: 180px;
+  }
+
+  .services .title h1 {
+    font-size: 1.8rem;
+  }
+
+  .services .title p {
+    font-size: 1rem;
+  }
+}
+.services2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/istockphoto-1208657520-612x612.jpg) center / cover no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 60px 0;
+}
+
+/* العنوان */
+.services2 h2 {
+  color: #ffeb3b;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* الصناديق */
+.service-box {
+  background: rgba(255, 255, 255, 0.08); /* لون شفاف */
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  animation: fadeInUp 1s ease both;
+  backdrop-filter: blur(8px); /* تأثير الزجاج */
+}
+
+.service-box h4 {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.service-box p {
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+/* Hover Animation */
+.service-box:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: #ffeb3b;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 25px rgba(255, 235, 59, 0.25);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-box {
+    padding: 20px;
+  }
+
+  .services2 h2 {
+    font-size: 1.6rem;
+  }
+
+  .service-box h4 {
+    font-size: 1.1rem;
+  }
+}
+
+.photos {
+  padding: 70px 0;
+}
+
+.photos h2 {
+  color: #ffeb3b;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  border-radius: 15px;
+}
+
+/* Overlay for hover */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 71, 161, 0.7); /* خلفية شفافة */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  padding: 15px;
+  transition: opacity 0.4s ease;
+}
+
+.overlay h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.overlay p {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+/* Hover effect */
+.photo-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.photo-card:hover .overlay {
+  opacity: 1;
+}
+
+/* Card hover effect */
+.photo-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(255, 235, 59, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .photo-card img {
+    height: 200px;
+  }
+
+  .overlay h4 {
+    font-size: 1.2rem;
+  }
+
+  .overlay p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ================== Location Section ================== */
+.location {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.location h3 i {
+  color: green; /* لون الأيقونة */
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+  font-size: 35px;
+}
+
+/* Cards style */
+.location .card {
+  background: linear-gradient(135deg, #ffffffee, #e3f2fdcc);
+  border-radius: 20px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay animation on hover */
+.location .card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+  background-size: 400% 400%;
+  transition: all 0.5s ease;
+  opacity: 0.2;
+  border-radius: 20px;
+  z-index: 0;
+}
+
+.location .card:hover::before {
+  animation: gradientMove 5s ease infinite;
+  opacity: 0.4;
+}
+
+/* Move gradient animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hover card effect */
+.location .card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Card content */
+.location .card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.location .card-body h3 {
+  font-size: 1.4rem;
+  color: #1565c0;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.location .card-body p {
+  font-size: 0.95rem;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.location .card:hover i {
+  transform: rotate(20deg) scale(1.2);
+  /* color: #ffd700; */
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .location .card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .location .card-body h3 {
+    font-size: 1.2rem;
+  }
+  .location .card-body p {
+    font-size: 0.9rem;
+  }
+}
+
+/*              Contact  section                     */
+
+.contact {
+  background: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("../images/contact-bg.jpg") center/cover no-repeat fixed;
+  color: #fff;
+  padding: 80px 20px;
+}
+
+.contact .title4 h1 {
+  color: #ffd700;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.contact .title4 p {
+  text-align: center;
+  color: #eee;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+
+/* Cards */
+.contact .card {
+  background: rgba(255, 255, 255, 0.1); /* شفاف جزئي */
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  color: #fff;
+  cursor: pointer;
+  height: 335px;
+}
+
+.contact .card i {
+  font-size: 2.5rem;
+  color: #ffd700;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover */
+.contact .card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(255, 215, 0, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contact .card:hover i {
+  transform: rotate(15deg) scale(1.2);
+  color: #ffea00;
+}
+
+.contact .card h3 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.contact .card p,
+.contact .card h2 {
+  color: #fff;
+}
+
+.feature-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact .card {
+    margin-bottom: 20px;
+  }
+}
+
+.offers {
+  background: rgba(255, 255, 255, 0.1); /* شفافية بسيطة */
+  backdrop-filter: blur(6px); /* ضباب خفيف */
+  border-radius: 20px;
+  padding: 50px 20px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.offers:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.offers-title h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffc107;
+}
+
+.offers-title p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* زرار الحجز */
+.pulse-btn {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.6);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
+}
+
+.services-title {
+  border-bottom: 10px solid #e0a800;
+  border-radius: 2px;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+}
+
+.footer {
+  width: 100%;
+  position: relative;
+  left: 0;
+  transform: translateY(0);
+  bottom: 0;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* تدرج غامق جذاب */
+  color: #fff;
+  padding: 40px 30px;
+  overflow: hidden;
+}
+
+.footer h4 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  color: #ffca28; /* لون العناوين */
+}
+
+.footer h4::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #ffd700; /* أصفر ذهبي */
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  color: #ddd;
+}
+
+.footer ul li a{
+  text-decoration: none;
+  color: #ddd;
+}
+
+.footer ul li i {
+  margin-right: 10px;
+  color: #ffca28; /* أيقونات باللون الذهبي */
+  min-width: 20px;
+  transition: transform 0.4s ease, color 0.4s ease;
+  padding-left: 10px;
+}
+
+.footer ul li:hover i {
+  transform: rotate(25deg) scale(1.3);
+  color: #ffd700;
+}
+
+.footer ul li:hover {
+  transform: translateX(10px);
+  color: #ffd700;
+}
+
+.footer hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 40px 0;
+}
+
+.footer p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+.footer .link a:hover{
+  border-bottom: 2px solid #ffca28;
+  display: inline-block;
+  color: #ffca28;
+}
+/* Footer Bottom Animation */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+  transform: skewX(-25deg);
+  animation: shine 6s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-25deg); }
+  100% { transform: translateX(100%) skewX(-25deg); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .footer {
+    text-align: center;
+  }
+  .footer ul li {
+    justify-content: center;
+  }
+}
+
+ 
+/* الكارت تحت الصورة */
+.quality-badge {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* تدرج غامق جذاب */
+  color: #fff;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  animation: floatPulse 3s infinite ease-in-out;
+  z-index: 10;
+  border: 2px solid rgba(255, 215, 0, 0.6);
+}
+
+/* أيقونة */
+.quality-badge i {
+  font-size: 1.3rem;
+  color: #ffd700;
+  transition: transform 0.3s ease;
+}
+
+/* أنيميشن */
+@keyframes floatPulse {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  }
+}
+
+/* تأثير hover */
+.quality-badge:hover {
+  background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+  transform: scale(1.05);
+}
