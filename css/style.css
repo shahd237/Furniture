@@ -1242,3 +1242,25 @@ ul {
   background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
   transform: scale(1.05);
 }
+
+/* Responsive Video */
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+
+
+/* When in view */
+.video-wrapper.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.videos-title{
+  border-bottom:5px solid#e0a800;
+  display: inline-block;
+
+}
