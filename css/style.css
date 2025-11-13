@@ -1264,3 +1264,31 @@ ul {
   display: inline-block;
 
 }
+
+.whatsapp-btn{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  text-decoration: none;
+  background-color: green;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.whatsapp-btn:hover{
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+
+
